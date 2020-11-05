@@ -1,28 +1,32 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import Header from "../components/Header/Header.jsx";
-import Cards from "../components/Cards/Card.jsx";
-import Search from "../components/SearchBox/SearchBox.jsx";
+import { Spin } from "antd";
+import { LoadingOutlined } from "@ant-design/icons";
+
+import style from "./Home.module.scss";
+import Header from "../../components/Header/Header.jsx";
+import Cards from "../../components/Cards/Card.jsx";
+import Search from "../../components/SearchBox/SearchBox.jsx";
 
 const Home = () => {
+  const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
   const hist = useHistory();
   const [pokeData, setPokeData] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState(localStorage.getItem("search"));
-  const apiUrl = "https://api.pokemontcg.io/v1/cards";
 
   useEffect(() => {
-    getPokemon(search === null ? "" : search);
+    getPokemon(search !== null ? search : "");
     localStorage.setItem("search", search);
   }, [search]);
 
-  const getPokemon = async (val) => {
-    const data = await fetch(apiUrl);
+  const getPokemon = async (value) => {
+    const data = await fetch(
+      `https://api.pokemontcg.io/v1/cards?name=${value}`
+    );
     const cards = await data.json();
 
     setPokeData(cards.cards);
-    setSearch(val);
-    setLoading(false);
+    setSearch(value);
   };
 
   const handleOpen = (card) => {
@@ -36,9 +40,12 @@ const Home = () => {
       <Header />
       <Search onLookUp={getPokemon} search={search} returnedCards={pokeData} />
 
-      {loading ? (
-        <h1 style={{ color: "white", fontSize: 20 }}>loading..</h1>
+      {pokeData.length < 1 ? (
+        <div className={style.Spin}>
+          <Spin indicator={antIcon} size="large" />
+        </div>
       ) : (
+        // <h1 style={{ color: "white", fontSize: 20 }}>loading..</h1>
         <Cards fetchedCards={pokeData} onOpen={handleOpen} />
       )}
     </div>

@@ -1,0 +1,31 @@
+.backButton {
+  display: flex;
+  justify-content: center;
+}
+
+.Button {
+  border: 1px solid #434343;
+  border-radius: 5px;
+  margin-right: 25px;
+  margin-bottom: 5px;
+}
+.Container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 30px;
+  max-width: 800px;
+  margin: 0 auto;
+  .cardImg {
+    max-width: 450px;
+    max-height: 580px;
+    width: 100%;
+    height: 100%;
+    height: auto;
+    flex: 1;
+  }
+  .card {
+    margin: 20px;
+  }
+}

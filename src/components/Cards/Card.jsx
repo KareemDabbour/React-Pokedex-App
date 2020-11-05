@@ -13,7 +13,7 @@ const Pokemon = ({ fetchedCards, onOpen }) => {
               hoverable
               style={{ width: 240 }}
               cover={<img alt="example" src={card.imageUrl} />}
-              bodyStyle={{ backgroundColor: "#261a28" }}
+              bodyStyle={{ backgroundColor: "#2e2230" }}
               onClick={() => onOpen({ card })}
             >
               <Meta

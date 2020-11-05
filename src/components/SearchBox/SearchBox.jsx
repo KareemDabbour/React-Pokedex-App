@@ -1,20 +1,25 @@
 import React, { useState } from "react";
 import { Input } from "antd";
+import styles from "./SearchBox.module.scss";
 
 const { Search } = Input;
 
 const SearchBox = ({ onLookUp, search }) => {
-  const [val, setVal] = useState(search);
+  const [value, setValue] = useState(search);
+
   return (
     <div>
-      <Search
-        placeholder="Pokemon name: "
-        defaultValue={search}
-        enterButton="Search"
-        size="large"
-        onChange={(e) => setVal(e.target.value)}
-        onClick={() => onLookUp(val)}
-      />
+      <div className={styles.Container}>
+        <Search
+          className={styles.SearchBox}
+          placeholder="Pokemon name: "
+          defaultValue={search}
+          enterButton="Search"
+          size="large"
+          onChange={(e) => setValue(e.target.value)}
+          onClick={() => onLookUp(value)}
+        />
+      </div>
     </div>
   );
 };
