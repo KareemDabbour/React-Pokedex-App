@@ -6,7 +6,9 @@ import image from "./header.png";
 const Header = () => {
   return (
     <div className={styles.Header}>
-      <PageHeader title={<h1 style={{ color: "white" }}>Pokédex</h1>}>
+      <PageHeader
+        title={<h1 style={{ color: "white", textAlign: "center" }}>Pokédex</h1>}
+      >
         <img className={styles.Image} src={image} alt="example" />
       </PageHeader>
     </div>
