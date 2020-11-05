@@ -8,6 +8,7 @@ const Pokemon = ({ location }) => {
   const [card, setCard] = useState(
     JSON.parse(localStorage.getItem("card")) || []
   );
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const status = location?.state?.card?.card || {};
   useEffect(() => {
     if (status) {
