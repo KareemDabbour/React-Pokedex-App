@@ -38,14 +38,13 @@ const Home = () => {
   return (
     <div>
       <Header />
-      <Search onLookUp={getPokemon} search={search} returnedCards={pokeData} />
+      <Search onLookUp={getPokemon} search={search} />
 
       {pokeData.length < 1 ? (
         <div className={style.Spin}>
           <Spin indicator={antIcon} size="large" />
         </div>
       ) : (
-        // <h1 style={{ color: "white", fontSize: 20 }}>loading..</h1>
         <Cards fetchedCards={pokeData} onOpen={handleOpen} />
       )}
     </div>
