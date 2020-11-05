@@ -18,7 +18,7 @@ const Pokemon = ({ fetchedCards, onOpen }) => {
             >
               <Meta
                 style={{ color: "white" }}
-                title={card.name}
+                title={<b>{card.name}</b>}
                 description={card.set}
               />
             </Card>
@@ -28,5 +28,5 @@ const Pokemon = ({ fetchedCards, onOpen }) => {
     </div>
   );
 };
-// r 46 g 34 b 48
+
 export default Pokemon;

@@ -11,7 +11,6 @@ const SearchBox = ({ onLookUp, search }) => {
     <div>
       <div className={styles.Container}>
         <Search
-          className={styles.SearchBox}
           placeholder="Pokemon name: "
           defaultValue={search}
           enterButton="Search"
